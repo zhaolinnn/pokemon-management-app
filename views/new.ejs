@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <form action="/pokemon/new" method="POST">
+        <label for="name">Pokémon Name: </label>
+        <input type="text" name="name" id="name" required>
+
+        <label for="trainer">Trainer:</label>
+        <select name="trainer_id" id="trainer" required>
+        <% trainers.forEach(trainer => { %>
+            <option value="<%= trainer.id %>">
+            <%= trainer.name %>
+            </option>
+        <% }) %>
+        </select>
+        <br><br>
+
+        <!-- Types dropdown (multiple) -->
+        <label for="types">Type(s):</label>
+        <select name="type_ids" id="types" multiple required>
+        <% types.forEach(type => { %>
+            <option value="<%= type.id %>">
+            <%= type.name %>
+            </option>
+        <% }) %>
+        </select>
+        <p><small>Hold Cmd (Mac) or Ctrl (Windows) to select two types</small></p>
+
+        <button type="submit">Submit</button>
+
+    </form>
+    
+</body>
+</html>

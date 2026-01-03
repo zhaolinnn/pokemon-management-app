@@ -56,7 +56,10 @@ VALUES
   ('Bug'),
   ('Rock'),
   ('Ghost'),
-  ('Dragon');
+  ('Dragon'),
+  ('Dark'),
+  ('Steel'),
+  ('Fairy');
 
 -- Add a pokemon
 INSERT INTO pokemon (name, trainer_id)

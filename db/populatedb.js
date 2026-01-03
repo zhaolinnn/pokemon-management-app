@@ -1,6 +1,8 @@
+require("dotenv").config({ quiet: true });
 const { Client } = require("pg");
 
 const SQL = `
+
 DROP TABLE IF EXISTS pokemon_types;
 DROP TABLE IF EXISTS pokemon;
 DROP TABLE IF EXISTS trainers;
@@ -57,14 +59,20 @@ VALUES
   ('Dragon');
 
 -- Add a pokemon
-INSERT INTO pokemon (nickname, trainer_id)
+INSERT INTO pokemon (name, trainer_id)
 VALUES ('Charizard', 2); -- Ash
 
 -- Assign Fire + Flying
 INSERT INTO pokemon_types (pokemon_id, type_id)
 VALUES
-  (1, (SELECT id FROM types WHERE name = 'Fire')),
-  (1, (SELECT id FROM types WHERE name = 'Flying'));
+  (
+    (SELECT id FROM pokemon WHERE name = 'Charizard'),
+    (SELECT id FROM types WHERE name = 'Fire')
+  ),
+  (
+    (SELECT id FROM pokemon WHERE name = 'Charizard'),
+    (SELECT id FROM types WHERE name = 'Flying')
+  );
 
 
 `;

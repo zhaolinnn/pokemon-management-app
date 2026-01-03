@@ -6,7 +6,19 @@ async function getAllPokemon() {
 }
 
 async function insertPokemon(name, trainer_id) {
-  await pool.query("INSERT INTO pokemon (name, trainer_id) VALUES ($1, $2)", [name, trainer_id]);
+  await pool.query(
+    "INSERT INTO pokemon (name, trainer_id) VALUES ($1, $2)", 
+    [name, trainer_id]);
+}
+
+async function addPokemonType(pokemon_id, type_id) {
+  await pool.query(
+    `
+    INSERT INTO pokemon_types (pokemon_id, type_id)
+    VALUES ($1, $2)
+    `,
+    [pokemon_id, type_id]
+  );
 }
 
 module.exports = {

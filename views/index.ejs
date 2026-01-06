@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pokémon Management</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 2rem;
+    }
+    h1, h2 {
+      margin-bottom: 0.5rem;
+    }
+    ul {
+      margin-bottom: 2rem;
+    }
+    li {
+      margin-bottom: 0.25rem;
+    }
+    .pokemon {
+      margin-bottom: 1rem;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Pokémon Management App</h1>
+
+  <!-- Trainers -->
+  <h2>Trainers</h2>
+  <% if (trainers.length === 0) { %>
+    <p>No trainers found.</p>
+  <% } else { %>
+    <ul>
+      <% trainers.forEach(trainer => { %>
+        <li><%= trainer.name %></li>
+      <% }) %>
+    </ul>
+  <% } %>
+
+  <!-- Pokémon -->
+  <h2>Pokémon</h2>
+  <% if (pokemon.length === 0) { %>
+    <p>No Pokémon found.</p>
+  <% } else { %>
+    <% pokemon.forEach(p => { %>
+      <div class="pokemon">
+        <strong>Name:</strong> <%= p.name %><br>
+        <strong>Trainer:</strong> <%= p.trainer_name %><br>
+        <strong>Types:</strong>
+        <%= p.types.join(", ") %>
+      </div>
+    <% }) %>
+  <% } %>
+
+  <a href="/pokemon/new">Add a new Pokémon</a>
+  <br>
+  <a href="/trainer/new">Add a new trainer</a>
+
+</body>
+</html>

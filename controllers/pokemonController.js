@@ -1,9 +1,12 @@
 const db = require("../db/queries");
 
 async function getAllPokemon(req, res) {
-  const pokemon = await db.getAllPokemon();
+  const trainers = await db.getAllTrainers();
+  console.log("Trainers: ", trainers);
+  const pokemon = await db.getAllPokemonWithTypes();
   console.log("Pokemon: ", pokemon);
-  res.send("Pokemon: " + pokemon.map(pokemon => pokemon.name).join(", "));
+  
+  res.render("index", {trainers, pokemon});
 }
 
 async function showNewPokemonForm(req, res) {

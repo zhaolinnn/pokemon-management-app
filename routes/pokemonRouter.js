@@ -3,8 +3,8 @@ const pokemonController = require("../controllers/pokemonController");
 const pokemonRouter = Router();
 
 pokemonRouter.get("/", pokemonController.getAllPokemon);
-pokemonRouter.get("/pokemon/new", pokemonController.showNewPokemonForm);
+pokemonRouter.get("/new", pokemonController.showNewPokemonForm);
 
-pokemonRouter.post('/pokemon/new', pokemonController.createPokemonPost);
+pokemonRouter.post('/new', pokemonController.createPokemonPost);
 
 module.exports = pokemonRouter;

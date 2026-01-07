@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pokémon Management</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <h1>Pokémon Management App</h1>
+  <!-- Pokémon -->
+  <h2>Pokémon</h2>
+    
+  <strong>ID:</strong> <%= pokemon.id %><br>
+  <strong>Name:</strong> <%= pokemon.name %><br>
+  <strong>Trainer:</strong> <%= pokemon.trainer_name %><br>
+  <strong>Types:</strong>
+  <%= pokemon.types.join(", ") %>
+
+</body>
+</html>

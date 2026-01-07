@@ -2,27 +2,7 @@
 <html>
 <head>
   <title>Pokémon Management</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 2rem;
-    }
-    h1, h2 {
-      margin-bottom: 0.5rem;
-    }
-    ul {
-      margin-bottom: 2rem;
-    }
-    li {
-      margin-bottom: 0.25rem;
-    }
-    .pokemon {
-      margin-bottom: 1rem;
-      padding: 0.5rem;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-  </style>
+  <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
 
@@ -51,6 +31,22 @@
         <strong>Trainer:</strong> <%= p.trainer_name %><br>
         <strong>Types:</strong>
         <%= p.types.join(", ") %>
+        <br>
+
+        <form action="/pokemon/<%= p.id %>/delete" method="POST" style="display:inline;">
+          <button type="submit" onclick="return confirm('Delete <%= p.name %>?')">
+            Delete
+          </button>
+        </form>
+
+        <a href="/pokemon/<%= p.id %>/edit">
+          <button id="edit" class="detailsBtn">Edit</button>
+        </a>
+
+        <a href="/pokemon/<%= p.id %>">
+          <button id="details" class="detailsBtn">Open Details</button>
+        </a>
+
       </div>
     <% }) %>
   <% } %>

@@ -5,6 +5,9 @@ const path = require("node:path");
 const pokemonRouter = require("./routes/pokemonRouter");
 const trainerRouter = require("./routes/trainerRouter");
 
+app.use(express.static(path.join(__dirname, "public")));
+
+
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));

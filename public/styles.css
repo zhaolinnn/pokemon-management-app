@@ -1,0 +1,23 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 2rem;
+}
+
+h1, h2 {
+    margin-bottom: 0.5rem;
+}
+
+ul {
+    margin-bottom: 2rem;
+}
+
+li {
+    margin-bottom: 0.25rem;
+}
+
+.pokemon {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}

@@ -73,6 +73,54 @@ async function insertTrainer(name) {
   );
 }
 
+async function getPokemonById(id) {
+  const { rows } = await pool.query(
+    `
+    SELECT
+      p.id,
+      p.name,
+      tr.name AS trainer_name,
+      COALESCE(
+        ARRAY_AGG(t.name ORDER BY t.name) FILTER (WHERE t.name IS NOT NULL),
+        '{}'
+      ) AS types
+    FROM pokemon p
+    JOIN trainers tr ON tr.id = p.trainer_id
+    LEFT JOIN pokemon_types pt ON pt.pokemon_id = p.id
+    LEFT JOIN types t ON t.id = pt.type_id
+    WHERE p.id = $1
+    GROUP BY p.id, p.name, tr.name
+    `,
+    [id]
+  );
+
+  return rows[0] || null; // null if not found
+}
+
+async function deletePokemonById(id) {
+  await pool.query("DELETE FROM pokemon WHERE id = $1", [id]);
+}
+
+async function updatePokemon(id, name, trainer_id) {
+  await pool.query(
+    `
+    UPDATE pokemon
+    SET name = $1, trainer_id = $2
+    WHERE id = $3
+    `,
+    [name, trainer_id, id]
+  );
+}
+
+async function deletePokemonTypes(pokemon_id) {
+  await pool.query(
+    "DELETE FROM pokemon_types WHERE pokemon_id = $1",
+    [pokemon_id]
+  );
+}
+
+
+
 module.exports = {
   getAllPokemon,
   getAllPokemonWithTypes,
@@ -80,5 +128,9 @@ module.exports = {
   getAllTypes,
   getAllTrainers,
   addPokemonType,
-  insertTrainer
+  insertTrainer,
+  getPokemonById,
+  deletePokemonById,
+  updatePokemon,
+  deletePokemonTypes,
 };

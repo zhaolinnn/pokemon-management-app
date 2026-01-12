@@ -4,34 +4,47 @@
     <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-    <form action="/pokemon/new" method="POST">
-        <label for="name">Pokémon Name: </label>
-        <input type="text" name="name" id="name" required>
 
-        <label for="trainer">Trainer:</label>
-        <select name="trainer_id" id="trainer" required>
-        <% trainers.forEach(trainer => { %>
-            <option value="<%= trainer.id %>">
-            <%= trainer.name %>
-            </option>
-        <% }) %>
-        </select>
-        <br><br>
+    <div class="fill-out">
+        <h1 class="main-title">Add Your Pokemon</h1>
 
-        <!-- Types dropdown (multiple) -->
-        <label for="types">Type(s):</label>
-        <select name="type_ids" id="types" multiple required>
-        <% types.forEach(type => { %>
-            <option value="<%= type.id %>">
-            <%= type.name %>
-            </option>
-        <% }) %>
-        </select>
-        <p><small>Hold Cmd (Mac) or Ctrl (Windows) to select two types</small></p>
+        <form action="/pokemon/new" method="POST">
 
-        <button type="submit">Submit</button>
+            <div class="fill-out">
+                <label for="name">Pokémon Name: </label>
+                <input type="text" name="name" id="name" required>
 
-    </form>
+                <label for="trainer">Trainer:</label>
+                <select name="trainer_id" id="trainer" required>
+                <% trainers.forEach(trainer => { %>
+                    <option value="<%= trainer.id %>">
+                    <%= trainer.name %>
+                    </option>
+                <% }) %>
+                </select>
+                <br><br>
+
+                 <!-- Types dropdown (multiple) -->
+                <label for="types">Type(s):</label>
+                <select name="type_ids" id="types" multiple required>
+                <% types.forEach(type => { %>
+                    <option value="<%= type.id %>">
+                    <%= type.name %>
+                    </option>
+                <% }) %>
+                </select>
+                <p><small>Hold Cmd (Mac) or Ctrl (Windows) to select two types</small></p>
+
+                <button type="submit">Submit</button>
+
+            </div>
+            
+
+           
+
+        </form>
+    </div>
+    
     
 </body>
 </html>

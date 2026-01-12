@@ -6,19 +6,14 @@
 </head>
 <body>
 
-  <h1>Pokémon Management App</h1>
+  <h1 class="main-title">Pokémon Management App</h1>
 
-  <!-- Trainers -->
-  <h2>Trainers</h2>
-  <% if (trainers.length === 0) { %>
-    <p>No trainers found.</p>
-  <% } else { %>
-    <ul>
-      <% trainers.forEach(trainer => { %>
-        <li><%= trainer.name %></li>
-      <% }) %>
-    </ul>
-  <% } %>
+  <div class="add-btns">
+    <a href="/pokemon/new">Add a new Pokémon</a>
+    <br>
+    <a href="/trainer/new">Add a new trainer</a>
+  
+  </div>
 
   <!-- Pokémon -->
   <h2>Pokémon</h2>
@@ -51,9 +46,21 @@
     <% }) %>
   <% } %>
 
-  <a href="/pokemon/new">Add a new Pokémon</a>
-  <br>
-  <a href="/trainer/new">Add a new trainer</a>
+  
 
+  <!-- Trainers -->
+  <h2>Trainers</h2>
+  <% if (trainers.length === 0) { %>
+    <p>No trainers found.</p>
+  <% } else { %>
+    <ul>
+      <% trainers.forEach(trainer => { %>
+        <li><%= trainer.name %></li>
+      <% }) %>
+    </ul>
+  <% } %>
+
+  
+ 
 </body>
 </html>

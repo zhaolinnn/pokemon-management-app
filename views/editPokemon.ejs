@@ -1,40 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-    <title>Document</title>
+  <title>Edit Your Pokemon</title>
+  <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-    <form action="/pokemon/<%= pokemon.id %>/edit" method="POST">
+  <h1 class="main-title">Edit Pokemon</h1>
 
-  <!-- Name -->
-  <label>Name:</label>
-  <input type="text" name="name" value="<%= pokemon.name %>" required>
+  <a href="/pokemon/">
+    <button id="details" class="detailsBtn">Home</button>
+  </a>
 
-  <!-- Trainer -->
-  <label>Trainer:</label>
-  <select name="trainer_id" required>
-    <% trainers.forEach(tr => { %>
-      <option value="<%= tr.id %>"
-        <%= tr.name === pokemon.trainer_name ? "selected" : "" %>>
-        <%= tr.name %>
-      </option>
-    <% }) %>
-  </select>
+  <form action="/pokemon/<%= pokemon.id %>/edit" method="POST">
 
-  <!-- Types -->
-  <label>Types:</label>
-  <select name="type_ids" multiple required>
-    <% types.forEach(t => { %>
-      <option value="<%= t.id %>"
-        <%= pokemon.types.includes(t.name) ? "selected" : "" %>>
-        <%= t.name %>
-      </option>
-    <% }) %>
-  </select>
+    <div class="fill-out">
+      <!-- Name -->
+      <label>Name:</label>
+      <input type="text" name="name" value="<%= pokemon.name %>" required>
 
-  <button type="submit">Update Pokémon</button>
-    </form>
+      <!-- Trainer -->
+      <label>Trainer:</label>
+      <select name="trainer_id" required>
+        <% trainers.forEach(tr => { %>
+          <option value="<%= tr.id %>"
+            <%= tr.name === pokemon.trainer_name ? "selected" : "" %>>
+            <%= tr.name %>
+          </option>
+        <% }) %>
+      </select>
+
+      <!-- Types -->
+      <label>Types:</label>
+      <select name="type_ids" multiple required>
+        <% types.forEach(t => { %>
+          <option value="<%= t.id %>"
+            <%= pokemon.types.includes(t.name) ? "selected" : "" %>>
+            <%= t.name %>
+          </option>
+        <% }) %>
+      </select>
+
+      <button type="submit">Update Pokémon</button>
+
+      </div>
+      
+  </form>
     
 </body>
 </html>

@@ -22,14 +22,17 @@
   <% } else { %>
     <% pokemon.forEach(p => { %>
       <div class="pokemon">
-        <strong>Name:</strong> <%= p.name %><br>
-        <strong>Trainer:</strong> <%= p.trainer_name %><br>
-        <strong>Types:</strong>
-        <%= p.types.join(", ") %>
+        <div class="pokemonDesc">
+          <strong>Name:</strong> <%= p.name %><br>
+          <strong>Trainer:</strong> <%= p.trainer_name %><br>
+          <strong>Types:</strong>
+          <%= p.types.join(", ") %>
+        </div>
+      
         <br>
 
         <form action="/pokemon/<%= p.id %>/delete" method="POST" style="display:inline;">
-          <button type="submit" onclick="return confirm('Delete <%= p.name %>?')">
+          <button type="submit" class="detailsBtn" onclick="return confirm('Delete <%= p.name %>?')">
             Delete
           </button>
         </form>
